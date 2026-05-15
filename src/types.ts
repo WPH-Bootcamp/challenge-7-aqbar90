@@ -14,6 +14,7 @@ interface ToDoItem {
   text: string;
   completed: boolean;
   status: ToDoStatus;
+  created: Date;
 }
 
 type AddToDo = (text: string) => void;
