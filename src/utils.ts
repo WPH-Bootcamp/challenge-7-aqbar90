@@ -1,3 +1,5 @@
+import { ToDoItem } from './types';
+
 // TODO: Implementasikan type guards di sini
 // Hint: Type guard berguna untuk memastikan tipe data saat runtime
 
@@ -25,7 +27,7 @@ function validateToDo(todo: any): boolean {
 // TODO: Buat fungsi helper untuk menampilkan tanggal/waktu dengan format yang bagus
 
 function formatDate(date: Date): string {
-  return date.toLocaleDateString('id-ID', {
+  return date.toLocaleString('id-ID', {
     day: '2-digit',
     month: 'long',
     year: 'numeric',

@@ -7,9 +7,9 @@
 
 // TODO: Buat tipe untuk fungsi-fungsi yang akan digunakan
 
-type ToDoStatus = 'Active' | 'Done';
+export type ToDoStatus = 'Active' | 'Done';
 
-interface ToDoItem {
+export interface ToDoItem {
   id: number;
   text: string;
   completed: boolean;

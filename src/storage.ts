@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { ToDoItem } from './types';
 
 // TODO: Definisikan path file untuk menyimpan data To-Do
 
