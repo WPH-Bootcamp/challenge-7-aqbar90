@@ -1,13 +1,11 @@
 // TODO: Import tipe-tipe yang sudah didefinisikan di types.ts
 import { ToDoItem } from './types';
-import { ToDoStatus } from './types';
 
 // TODO: Import fungsi storage untuk baca/tulis file
 
 import { readToDos } from './storage';
 import { saveToDos } from './storage';
-import { initStorage } from './storage';
-import { todo } from 'node:test';
+import { text } from 'stream/consumers';
 
 // TODO: Buat fungsi untuk menambahkan To-Do baru
 // - Generate id yang unik (bisa pakai timestamp atau counter)
@@ -16,7 +14,7 @@ import { todo } from 'node:test';
 
 export function addToDo(text: string): void {
   if (!text || text.trim() === '') {
-    console.log('mohon isi todo');
+    console.log('Mohon isi todo');
     return;
   }
   const todos: ToDoItem[] = readToDos();
@@ -44,7 +42,7 @@ export function completedToDo(id: number): void {
   // - Handle kasus jika id tidak ditemukan
 
   if (!todo) {
-    console.log(`Todo dengan id ${id} tidak ditemukan`);
+    console.log(`Todo dengan id "${id}" tidak ditemukan`);
     return;
   }
 
@@ -53,7 +51,7 @@ export function completedToDo(id: number): void {
   todo.completed = true;
   todo.status = 'Done';
   saveToDos(todos);
-  console.log(`Todo ${todo.text} berhasil di simpan`);
+  console.log(`Todo "${todo.text}" berhasil di simpan`);
 }
 
 // TODO: Buat fungsi untuk menghapus To-Do
@@ -63,19 +61,20 @@ export function deleteToDo(id: number): void {
 
   // - Filter To-Do berdasarkan id
 
-  const todoExist = todos.some((todo) => todo.id === id);
+  const todo = todos.find((todo) => todo.id === id);
 
   // - Handle kasus jika id tidak ditemukan
 
-  if (!todoExist) {
-    console.log(`Todo dengan id ${id} tidak ditemukan`);
+  if (!todo) {
+    console.log(`Todo dengan id "${id}" tidak ditemukan`);
+    return;
   }
 
   const updatedTodos = todos.filter((todo) => todo.id !== id);
 
   saveToDos(updatedTodos);
 
-  console.log(`Todo dengan id ${id} berhasil di hapus`);
+  console.log(`Todo "${todo?.text}" berhasil di hapus`);
 }
 
 // TODO: Buat fungsi untuk menampilkan semua To-Do

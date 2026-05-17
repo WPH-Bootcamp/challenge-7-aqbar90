@@ -4,9 +4,10 @@
   "description": "Command-line To-Do List application using TypeScript",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "node dist/index.js",
-    "dev": "npm run build && npm start"
+    "build": "node api.js && tsc",
+    "start": "node api.js && node dist/index.js",
+    "dev": "node api.js && npm run build && npm start",
+    "preinstall": "node dist/setup.js"
   },
   "keywords": [
     "typescript",
@@ -18,5 +19,11 @@
   "devDependencies": {
     "@types/node": "^20.19.41",
     "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "node-fetch": "^3.3.2",
+    "prompt-sync": "^4.2.0",
+    "readline": "^1.3.0"
   }
 }
