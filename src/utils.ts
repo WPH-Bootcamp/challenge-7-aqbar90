@@ -3,7 +3,7 @@ import { ToDoItem } from './types';
 // TODO: Implementasikan type guards di sini
 // Hint: Type guard berguna untuk memastikan tipe data saat runtime
 
-function isToDoItem(value: any): value is ToDoItem {
+export function isToDoItem(value: any): value is ToDoItem {
   return (
     typeof value === 'object' &&
     value !== null &&
@@ -16,7 +16,7 @@ function isToDoItem(value: any): value is ToDoItem {
 
 // TODO: Buat fungsi untuk memvalidasi apakah suatu objek adalah To-Do yang valid
 
-function validateToDo(todo: any): boolean {
+export function validateToDo(todo: any): boolean {
   if (!isToDoItem(todo)) {
     console.log('Data todo tidak valid');
     return false;
@@ -26,7 +26,7 @@ function validateToDo(todo: any): boolean {
 
 // TODO: Buat fungsi helper untuk menampilkan tanggal/waktu dengan format yang bagus
 
-function formatDate(date: Date): string {
+export function formatDate(date: Date): string {
   return date.toLocaleString('id-ID', {
     day: '2-digit',
     month: 'long',
@@ -38,6 +38,6 @@ function formatDate(date: Date): string {
 
 // TODO: Buat fungsi untuk memastikan input dari user adalah string yang valid
 
-function isValidString(input: any): input is string {
+export function isValidString(input: any): input is string {
   return typeof input === 'string' && input.trim().length > 0;
 }
